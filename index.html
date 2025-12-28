@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张歆谚周岁宴邀请函</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background-image: url('bg.jpg');
+            background-size: contain;
+            background-position: center top;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.4);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* 装饰元素 - 气球 */
+        .balloon {
+            position: fixed;
+            border-radius: 50%;
+            animation: float 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .balloon-1 {
+            width: 60px;
+            height: 75px;
+            background: linear-gradient(135deg, #FFC0CB 0%, #E8A0B8 100%);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .balloon-2 {
+            width: 50px;
+            height: 62px;
+            background: linear-gradient(135deg, #E8E8E8 0%, #C0C0C0 100%);
+            top: 20%;
+            right: 8%;
+            animation-delay: 1s;
+        }
+
+        .balloon-3 {
+            width: 55px;
+            height: 68px;
+            background: linear-gradient(135deg, #FFD1DC 0%, #FFB6C1 100%);
+            top: 60%;
+            left: 3%;
+            animation-delay: 2s;
+        }
+
+        .balloon-4 {
+            width: 65px;
+            height: 80px;
+            background: linear-gradient(135deg, #F5F5F5 0%, #D3D3D3 100%);
+            top: 50%;
+            right: 5%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* 星星装饰 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #E8E8E8 0%, #C0C0C0 100%);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .star:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; transform: scale(0.5); }
+        .star:nth-child(2) { top: 25%; right: 25%; animation-delay: 0.5s; transform: scale(0.7); }
+        .star:nth-child(3) { top: 45%; left: 10%; animation-delay: 1s; transform: scale(0.6); }
+        .star:nth-child(4) { top: 70%; right: 15%; animation-delay: 1.5s; transform: scale(0.8); }
+        .star:nth-child(5) { top: 85%; left: 30%; animation-delay: 0.3s; transform: scale(0.5); }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(0.8); }
+        }
+
+        /* 主内容区 */
+        .card {
+            background: rgba(255, 255, 255, 0.65);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+            margin-top: 30px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 顶部装饰 */
+        .header-decoration {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .crown {
+            font-size: 50px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* 主标题 */
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title .baby-name {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #FFC0CB 0%, #FFB6C1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255, 192, 203, 0.3);
+        }
+
+        .title .subtitle {
+            font-size: 24px;
+            color: #FFB6C1;
+            font-weight: 600;
+            letter-spacing: 5px;
+        }
+
+        /* 年龄标识 */
+        .age-badge {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .age-number {
+            font-size: 80px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.3);
+        }
+
+        .age-text {
+            font-size: 24px;
+            color: #FFA500;
+            margin-top: 20px;
+        }
+
+        /* 信息卡片 */
+        .info-section {
+            margin-top: 30px;
+        }
+
+        .info-item {
+            background: linear-gradient(135deg, #FFF5F8 0%, #F8F5F8 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .info-icon {
+            font-size: 28px;
+            margin-right: 15px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .info-value a {
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px dashed #FFB6C1;
+        }
+
+        .info-value a:hover {
+            color: #FFB6C1;
+            border-bottom-style: solid;
+        }
+
+        /* 底部祝福语 */
+        .blessing {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #FFD1DC 0%, #F0E8E8 100%);
+            border-radius: 20px;
+        }
+
+        .blessing-text {
+            font-size: 18px;
+            color: #FFB6C1;
+            font-weight: 600;
+            line-height: 1.8;
+        }
+
+        /* 底部装饰 */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-bottom: 30px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .heart {
+            font-size: 24px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* 彩带装饰 */
+        .ribbon {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .ribbon-item {
+            position: absolute;
+            width: 10px;
+            height: 60px;
+            animation: fall 8s linear infinite;
+        }
+
+        .ribbon-item:nth-child(1) { left: 10%; background: #E8A0B8; animation-delay: 0s; }
+        .ribbon-item:nth-child(2) { left: 30%; background: #E8E8E8; animation-delay: 2s; }
+        .ribbon-item:nth-child(3) { left: 50%; background: #FFB6C1; animation-delay: 4s; }
+        .ribbon-item:nth-child(4) { left: 70%; background: #C0C0C0; animation-delay: 6s; }
+        .ribbon-item:nth-child(5) { left: 90%; background: #FFD1DC; animation-delay: 1s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 380px) {
+            .title .baby-name { font-size: 40px; }
+            .title .subtitle { font-size: 20px; }
+            .age-number { font-size: 60px; }
+            .info-value { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 装饰元素 -->
+    <div class="balloon balloon-1"></div>
+    <div class="balloon balloon-2"></div>
+    <div class="balloon balloon-3"></div>
+    <div class="balloon balloon-4"></div>
+
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <div class="ribbon">
+        <div class="ribbon-item"></div>
+        <div class="ribbon-item"></div>
+        <div class="ribbon-item"></div>
+        <div class="ribbon-item"></div>
+        <div class="ribbon-item"></div>
+    </div>
+
+    <!-- 主内容 -->
+    <div class="container">
+        <div class="card">
+            <!-- 顶部装饰 -->
+            <div class="header-decoration">
+                <div class="crown">👑</div>
+            </div>
+
+            <!-- 标题 -->
+            <div class="title">
+                <div class="baby-name">张歆谚</div>
+                <div class="subtitle">周岁宴邀请函</div>
+            </div>
+
+            <!-- 年龄标识 -->
+            <div class="age-badge">
+                <div class="age-number">1</div>
+            </div>
+            <div style="text-align: center;">
+                <div class="age-text">岁啦！🎂</div>
+            </div>
+
+            <!-- 信息卡片 -->
+            <div class="info-section">
+                <div class="info-item">
+                    <div class="info-icon">🏨</div>
+                    <div class="info-content">
+                        <div class="info-label">餐厅</div>
+                        <div class="info-value">博林天瑞轩·粤菜餐厅</div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">🕐</div>
+                    <div class="info-content">
+                        <div class="info-label">时间</div>
+                        <div class="info-value">2026年1月2日 11:30</div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">🏠</div>
+                    <div class="info-content">
+                        <div class="info-label">包房</div>
+                        <div class="info-value">二楼天凤厅</div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <div class="info-label">地址</div>
+                        <div class="info-value"><a href="https://apis.map.qq.com/tools/poimarker?type=0&marker=coord:22.583116,113.971825;title:博林天瑞喜来登酒店;addr:深圳市南山区留仙大道&key=CMCBZ-5I5KK-6LNJ5-AXKXO-SWWYS-CSFTQ&referer=myapp" target="_blank">深圳市南山区留仙大道博林天瑞喜来登酒店二楼天瑞轩</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 祝福语 -->
+            <div class="blessing">
+                <div class="blessing-text">
+                    亲爱的朋友们<br>
+                    诚邀您参加歆谚的周岁宴<br>
+                    与我们共同分享这份喜悦<br>
+                    期待您的光临！
+                </div>
+            </div>
+
+            <!-- 底部 -->
+            <div class="footer">
+                <div class="heart">💖</div>
+                <div class="footer-text" style="margin-top: 10px;">
+                    感谢您的祝福
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
